@@ -2,21 +2,24 @@ class CommentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
 
   def create
-    goal = Goal.find(params[:goal_id])
-    comment = goal.comments.build(comment_params)
+    @goal = Goal.find(params[:goal_id])
+    comment = @goal.comments.build(comment_params)
     comment.like = 0
-    if current_user == goal.writer
+    if current_user == @goal.writer
       comment.writer = current_user
     end
 
-    comment.save!
-
-    redirect_to goal
+    if comment.save
+      redirect_to @goal
+    else
+      # need to show error
+      redirect_to @goal
+    end
   end
 
   def destroy
     comment = Comment.find(params[:id])
-    comment.destroy!
+    comment.destroy
   end
 
   def like

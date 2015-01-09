@@ -8,7 +8,10 @@
    <ul class="list-group list-advice">
     <% @goals.each do |goal| %>
       <p>
-        <a href="<%= goal_path(goal) %>" class="list-group-item"><%= goal.content %></a>
+        <a href="<%= goal_path(goal) %>" class="list-group-item">
+          <%= goal.content %>
+          <span class="pull-right"><%= "+#{goal.comments.count}" %></span>
+        </a>
       </p>
     <% end %>
    </ul>

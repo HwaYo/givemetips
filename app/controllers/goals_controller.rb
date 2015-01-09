@@ -17,9 +17,13 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     @goal.writer = current_user
-    @goal.save!
 
-    redirect_to @goal
+    if @goal.save
+      redirect_to @goal
+    else
+      # need to show error
+      render 'new'
+    end
   end
 
   def show
