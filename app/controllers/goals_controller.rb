@@ -1,9 +1,11 @@
 class GoalsController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:new, :show]
+  skip_before_filter :authenticate_user!, :only => [:new, :show, :random_show]
 
   def index
     if user_signed_in?
-      @goals = current_user.goals.all
+      @goals = current_user.goals
+    else
+      redirect_to root_path
     end
   end
 
@@ -22,7 +24,7 @@ class GoalsController < ApplicationController
 
   def show
     @goal = Goal.find(params[:id])
-    # @user = @goal.user
+    @user = @goal.writer
     @url = goal_url(@goal)
   end
 
@@ -31,6 +33,15 @@ class GoalsController < ApplicationController
     @goal.destroy
 
     redirect_to goals_path
+  end
+
+  def random_show
+    if Goal.count >= 1
+      rand_id = Random.rand(1..Goal.count)
+      redirect_to goal_path(id: rand_id)
+    else
+      redirect_to root_path
+    end
   end
 
 private
