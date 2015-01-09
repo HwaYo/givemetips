@@ -1,0 +1,4 @@
+<%= form_for [@goal, @goal.comments.build] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+<% end %>
