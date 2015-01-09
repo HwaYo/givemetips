@@ -116,6 +116,14 @@ body {
   font-weight: bold;
 }
 
+/*
+ * Friend Advice, goal-prev
+ */
+
+ .list-advice, .goal-prev {
+  text-align: left;
+ }
+
 
 /*
  * Footer
@@ -133,16 +141,17 @@ body {
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
-    position: fixed;
+    /*position: fixed;*/
     top: 0;
   }
   .mastfoot {
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
   }
   /* Start the vertical centering */
   .site-wrapper-inner {
-    vertical-align: middle;
+    /*padding-top: 8%;*/
+    /*vertical-align: middle;*/
   }
   /* Handle the widths */
   .masthead,

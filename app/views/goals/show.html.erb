@@ -1,12 +1,31 @@
 
-<h1><%= @goal.content %></h1>
+<div class="inner cover">
+  <div>
+    <h3 class="cover-heading goal-prev">2015년에는 <%= current_user.name %></h3>
+    <h1 class="cover-heading"><%= @goal.content %></h1>
+  </div>
+  <hr/>
 
-<h2>Comments</h2>
-<%= render @goal.comments %>
-
-<h2>Give more Tips!</h2>
-<%= render 'comments/form' %>
-
-<% if current_user == @goal.writer %>
-<iframe src="//www.facebook.com/plugins/share_button.php?href=<%= @url.html_safe %>&layout=button&appId=818776511527788" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
-<% end %>
+  <p class="lead">
+    <%= form_for [@goal, @goal.comments.build] do |f| %>
+    <div class="input-group">
+      <%= f.text_field :content, class: "form-control", placeholder: "친구에게 조언을 해주세요." %>
+      <span class="input-group-btn">
+        <%= f.submit class: "btn btn-default", value: "댓글달기!" %>
+      </span>
+    </div>
+    <% end %>
+  </p>
+  <div>
+    <ul class="list-group list-advice">
+      <li class="list-group-item">오늘 힘내 </li>
+      <li class="list-group-item">잘해봐 </li>
+      <li class="list-group-item">ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</li>
+    </ul>
+  </div>
+  <p>
+    <% if current_user == @goal.writer %>
+    <iframe src="//www.facebook.com/plugins/share_button.php?href=<%= @url.html_safe %>&layout=button&appId=818776511527788" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
+    <% end %>
+  </p>
+</div>
