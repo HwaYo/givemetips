@@ -19,6 +19,9 @@ a:hover {
   border: 1px solid #000000;
 }
 
+.logo {
+  margin: 0 auto;
+}
 
 /*
  * Base structure
