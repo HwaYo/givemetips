@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Givemetips</title>
+  <title>Give me tips</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="Give me tips">
+  <meta name="description" content="나에게 조언을 줘!">
+  <meta name="keywords" content="새해, 2015, 조언, 팁, 목표, 계획">
+  <meta property="og:site_name" content="Give me tips!">
+  <meta property="og:url" content="<%= request.original_url %>">
+  <meta property="og:title" content="<%= og_title %>">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="<%= asset_url('logo.png') %>">
+  <meta property="og:description" content="<%= og_description %>">
+  <meta property="fb:app_id" content="<%= fb_app_id %>">
 
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -38,11 +47,18 @@
     <div class="cover-container">
       <div class="masthead clearfix">
         <div class="inner">
-          <h2 class="masthead-brand">Give me tips!</h2>
+          <h2 class="masthead-brand">
+            <%= link_to "Give me tips!", root_path %>
+          </h2>
           <nav>
             <ul class="nav masthead-nav">
-              <li class="active"><a href="">Home</a></li>
-              <li><a href="">조언보기</a></li>
+              <% if user_signed_in? %>
+                <li class="active"><%= link_to current_user.name + "님", root_path %></li>
+                <li><%= link_to "나의 목표", goals_path %></li>
+                <li><%= link_to "로그아웃", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "로그인", omniauth_authorize_path('user', 'facebook') %></li>
+              <% end %>
             </ul>
           </nav>
         </div>
@@ -50,7 +66,7 @@
       <%= yield %>
       <div class="mastfoot">
         <div class="inner">
-          <p>Copyrighter By <a href="https://github.com/HwaYo">Hwayo</a>.</p>
+          <p>Copyright By <a href="https://github.com/HwaYo">Hwayo</a>.</p>
         </div>
       </div>
     </div>

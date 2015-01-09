@@ -1,0 +1,16 @@
+<div class="inner cover">
+ <div>
+   <h1 class="cover-heading">2015년 나의 목표</h1>
+ </div>
+ <hr/>
+
+ <div>
+   <ul class="list-group list-advice">
+    <% @goals.each do |goal| %>
+      <p>
+        <a href="<%= goal_path(goal) %>" class="list-group-item"><%= goal.content %></a>
+      </p>
+    <% end %>
+   </ul>
+ </div>
+</div>

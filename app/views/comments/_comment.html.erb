@@ -1,0 +1,16 @@
+  <p>
+    <strong>Writer:</strong>
+    <%= comment.writer %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.content %>
+  </p>
+
+  <!-- Authorization of the Goal writer is needed -->
+  <p>
+    <% link_to 'Destroy Comment', [comment.article , comment] ,
+                method: :delete,
+                data: { confirm: 'Are you Sure?'} %>
+  </p>

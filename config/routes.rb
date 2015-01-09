@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   root 'goals#new'
 
   resources :goals, except: [:edit, :update] do
-    resources :comments, except: [:edit, :update]
+    get 'random', action: 'random_show', on: :collection
+    resources :comments, except: [:edit, :update] do
+      get 'like', shallow: true
+    end
   end
 end
