@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :goals
-  has_many :comments
+  has_many :goals, foreign_key: 'writer_id', class_name: 'Goal', dependent: :destroy
+  has_many :comments, foreign_key: 'writer_id', class_name: 'Comment' # destroy dependency: user <- goals <- comments
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
