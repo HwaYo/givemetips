@@ -1,20 +1,9 @@
 <h1><%= @goal.content %></h1>
 
-<table>
-  <tr>
-    <th>Writer</th>
-    <th>Content</th>
-  </tr>
-  <% @goal.comments.each do |comment| %>
-    <tr>
-      <td><%= comment.writer %></td>
-      <td><%= comment.content %></td>
-      <!-- We need Authorization by the Writer of the Goal -->
-      <td><%= link_to 'Destroy', article_path(article) ,
-              method: :delete , 
-              data: { confirm: 'Are you Sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+<h2>Comments</h2>
+<% render @goal.comments %>
+<% end %>
 
-<!-- <% render 'comments/form' %> -->
+<h2>Give more Tips!</h2>
+<% render 'comments/form' %>
+<% end %>
