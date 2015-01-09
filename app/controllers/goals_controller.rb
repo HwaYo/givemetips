@@ -37,7 +37,7 @@ class GoalsController < ApplicationController
 
   def random_show
     if Goal.count >= 1
-      rand_id = Random.rand(1..Goal.count)
+      rand_id = Random.rand(Goal.first.id..Goal.last.id)
       redirect_to goal_path(id: rand_id)
     else
       redirect_to root_path

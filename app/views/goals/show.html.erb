@@ -5,7 +5,7 @@
       <%= image_tag @user.image %>
       <%= @user.name %>님, 2015년에는!
     </h3>
-    <h1 class="cover-heading"><%= @goal.content %></h1>
+    <h1 class="cover-heading goal-content"><%= @goal.content %></h1>
   </div>
   <hr/>
 
@@ -15,7 +15,16 @@
   <div>
     <ul class="list-group list-advice">
       <% @goal.comments.order_by_recent.reject {|c| c.new_record? }.each do |comment| %>
-      <li <%= if comment.writer != nil then "style='background-color: #c0c0c0'".html_safe end %> class="list-group-item"><%= comment.content %></li>
+      <li <%= if comment.writer != nil then "style='background-color: #c0c0c0'".html_safe end %> class="list-group-item clearfix">
+        <%= comment.content %>
+        <% if comment.writer == nil %>
+          <% if comment.like == 0 %>
+            <%= link_to image_tag('won-fake.png'), current_user == @goal.writer ? goal_comment_like_path(@goal, comment) : "#" , class: "pull-right" %>
+          <% else %>
+            <%= link_to image_tag('won-true.jpg'), "#", class: "pull-right" %>
+          <% end %>
+        <% end %>
+      </li>
       <% end %>
     </ul>
   </div>

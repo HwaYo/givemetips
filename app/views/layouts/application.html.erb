@@ -42,9 +42,6 @@
           </h2>
           <nav>
             <ul class="nav masthead-nav">
-              
-              
-              
               <% if user_signed_in? %>
                 <li class="active"><%= link_to current_user.name + "님", root_path %></li>
                 <li><%= link_to "나의 목표", goals_path %></li>
