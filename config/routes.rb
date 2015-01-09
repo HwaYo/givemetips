@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  root 'goals#new'
+
   devise_for :users
 
-  resources :goals
-  root 'goals#new'
+  resources :goals do
+    resources :comments
+  end
 end
