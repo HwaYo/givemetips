@@ -33,8 +33,28 @@
   </style>
 </head>
 <body>
-
-  <%= yield %>
-
+<div class="site-wrapper">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <h2 class="masthead-brand">Hwayo</h2>
+          <nav>
+            <ul class="nav masthead-nav">
+              <li class="active"><a href="">Home</a></li>
+              <li><a href="">조언보기</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <%= yield %>
+      <div class="mastfoot">
+        <div class="inner">
+          <p>Copyrighter By <a href="https://github.com/HwaYo">Hwayo</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
