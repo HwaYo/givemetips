@@ -49,4 +49,4 @@ group :development, :test do
 end
 
 gem 'devise', '~> 3.4.1'
-
+gem 'omniauth-facebook', '~> 2.0.0'
