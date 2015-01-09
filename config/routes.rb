@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root 'goals#new'
 
   resources :goals, except: [:edit, :update] do
+    get 'random', action: 'random_show', on: :collection
     resources :comments, except: [:edit, :update]
   end
 end
