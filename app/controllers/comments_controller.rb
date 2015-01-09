@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create]
-  
+
   def create
     goal = Goal.find(params[:goal_id])
     comment = goal.comments.build(comment_params)

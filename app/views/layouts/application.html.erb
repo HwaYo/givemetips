@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Givemetips</title>
+  <title>Give me tips</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="Give me tips">
+  <meta name="description" content="나에게 조언을 줘!">
+  <meta name="keywords" content="새해, 2015, 조언, 팁, 목표, 계획">
+  <meta property="og:site_name" content="Give me tips!">
+  <meta property="og:url" content="<%= request.original_url %>">
+  <meta property="og:title" content="<%= og_title %>">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="<%= asset_url('logo.png') %>">
+  <meta property="og:description" content="<%= og_description %>">
+  <meta property="fb:app_id" content="<%= fb_app_id %>">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
