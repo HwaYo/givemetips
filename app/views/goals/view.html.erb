@@ -1,0 +1,9 @@
+<h1><%= @goal.content %></h1>
+
+<h2>Comments</h2>
+<% render @goal.comments %>
+<% end %>
+
+<h2>Give more Tips!</h2>
+<% render 'comments/form' %>
+<% end %>
