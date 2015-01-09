@@ -3,12 +3,17 @@
   <h1 class="cover-heading">2015년 목표는 무엇인가요?</h1>
   <p class="lead">
     <%= form_for @goal do |f| %>
-      <div class="input-group">
-        <%= f.text_field :content, class: "form-control", placeholder: "당신의 목표를 입력해 주세요." %>
-        <span class="input-group-btn">
-          <%= f.submit class: "btn btn-default", value: "Go!" %>
-        </span>
-      </div>
+      
+        <% if user_signed_in? %>
+          <div class="input-group">
+            <%= f.text_field :content, class: "form-control input-lg", placeholder: "목표를 입력해보세요" %>
+            <span class="input-group-btn">
+              <%= f.submit class: "btn btn-default input-lg", value: "Go!" %>
+            </span>
+          </div>
+        <% else %>
+          <%= f.text_field :content, class: "form-control input-lg", placeholder: "먼저 로그인하세요", disabled: true %>
+        <% end %>
     <% end %>
   </p>
 </div>

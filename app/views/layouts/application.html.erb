@@ -38,11 +38,19 @@
     <div class="cover-container">
       <div class="masthead clearfix">
         <div class="inner">
-          <h2 class="masthead-brand">Give me tips!</h2>
+          <h2 class="masthead-brand">
+            <%= link_to "Give me tips!", root_path %>
+          </h2>
           <nav>
             <ul class="nav masthead-nav">
               <li class="active"><a href="">Home</a></li>
               <li><a href="">조언보기</a></li>
+              
+              <% if user_signed_in? %>
+                <li><%= link_to "로그아웃", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "로그인", omniauth_authorize_path('user', 'facebook') %></li>
+              <% end %>
             </ul>
           </nav>
         </div>
@@ -50,7 +58,7 @@
       <%= yield %>
       <div class="mastfoot">
         <div class="inner">
-          <p>Copyrighter By <a href="https://github.com/HwaYo">Hwayo</a>.</p>
+          <p>Copyright By <a href="https://github.com/HwaYo">Hwayo</a>.</p>
         </div>
       </div>
     </div>

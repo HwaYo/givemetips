@@ -1,7 +1,12 @@
 
 <div class="inner cover">
   <div>
-    <h3 class="cover-heading goal-prev">2015년에는 <%= current_user.name %></h3>
+
+
+    <h3 class="cover-heading goal-prev">
+      <%= image_tag "http://graph.facebook.com/823180161104471/picture" %>
+      <%= current_user.name %>님, 2015년에는!
+    </h3>
     <h1 class="cover-heading"><%= @goal.content %></h1>
   </div>
   <hr/>
