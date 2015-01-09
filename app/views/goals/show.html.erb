@@ -7,6 +7,6 @@
 <h2>Give more Tips!</h2>
 <%= render 'comments/form' %>
 
-<%= @url %>
-
-<iframe src="//www.facebook.com/plugins/share_button.php?href=<%= @url %>&amp;layout=button&amp;appId=818776511527788" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
+<% if current_user == @goal.writer %>
+<iframe src="//www.facebook.com/plugins/share_button.php?href=<%= @url.html_safe %>&layout=button&appId=818776511527788" scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowTransparency="true"></iframe>
+<% end %>
