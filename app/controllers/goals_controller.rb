@@ -1,4 +1,6 @@
 class GoalsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
+
   def index
   end
 
@@ -9,6 +11,7 @@ class GoalsController < ApplicationController
 
   def create
     @goal = Goal.new(goal_params)
+    @goal.writer = current_user
     @goal.save!
 
     redirect_to @goal

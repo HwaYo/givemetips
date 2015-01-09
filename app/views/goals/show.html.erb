@@ -1,26 +1,19 @@
 
 <div class="inner cover">
   <div>
-    <h3 class="cover-heading goal-prev">2015년에는 <%= current_user.name %></h3>
+    <h3 class="cover-heading goal-prev">2015년에는 <%= @goal.writer.name %></h3>
     <h1 class="cover-heading"><%= @goal.content %></h1>
   </div>
   <hr/>
 
   <p class="lead">
-    <%= form_for [@goal, @goal.comments.build] do |f| %>
-    <div class="input-group">
-      <%= f.text_field :content, class: "form-control", placeholder: "친구에게 조언을 해주세요." %>
-      <span class="input-group-btn">
-        <%= f.submit class: "btn btn-default", value: "댓글달기!" %>
-      </span>
-    </div>
-    <% end %>
+    <%= render 'comments/form' %>
   </p>
   <div>
     <ul class="list-group list-advice">
-      <li class="list-group-item">오늘 힘내 </li>
-      <li class="list-group-item">잘해봐 </li>
-      <li class="list-group-item">ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</li>
+      <% @goal.comments.order_by_recent.reject {|c| c.new_record? }.each do |comment| %>
+      <li <%= if comment.writer != nil then "style='background-color: #c0c0c0'".html_safe end %> class="list-group-item"><%= comment.content %></li>
+      <% end %>
     </ul>
   </div>
   <p>
