@@ -50,3 +50,4 @@ end
 
 gem 'devise', '~> 3.4.1'
 gem 'omniauth-facebook', '~> 2.0.0'
+gem 'htmlentities', '~> 4.3.3'

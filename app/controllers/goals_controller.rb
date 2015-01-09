@@ -16,6 +16,7 @@ class GoalsController < ApplicationController
 
   def show
     @goal = Goal.find(params[:id])
+    @url = goal_url(@goal)
   end
 
   def destroy
