@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'goals#new'
 
-  resources :goals do
-    resources :comments
+  resources :goals, except: [:edit, :update] do
+    resources :comments, except: [:edit, :update]
   end
 end

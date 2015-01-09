@@ -7,20 +7,9 @@ class GoalsController < ApplicationController
     @goal = Goal.new
   end
 
-  def edit
-    @goal = Goal.find(params[:id])
-  end
-
   def create
     @goal = Goal.new(goal_params)
     @goal.save!
-
-    redirect_to @goal
-  end
-
-  def update
-    @goal = Goal.find(params[:id])
-    @goal.update!(goal_params)
 
     redirect_to @goal
   end
