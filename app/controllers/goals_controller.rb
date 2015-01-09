@@ -1,11 +1,11 @@
 class GoalsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_filter :authenticate_user!, :only => [:new, :show]
 
   def index
   end
 
   def new
-    @user = current_user
+    @user = User.new
     @goal = Goal.new
   end
 
@@ -19,6 +19,7 @@ class GoalsController < ApplicationController
 
   def show
     @goal = Goal.find(params[:id])
+    # @user = @goal.user
     @url = goal_url(@goal)
   end
 
