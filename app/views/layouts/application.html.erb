@@ -42,10 +42,12 @@
           </h2>
           <nav>
             <ul class="nav masthead-nav">
-              <li class="active"><%= link_to current_user.name, "#" if current_user %></li>
-              <li><a href="">조언보기</a></li>
+              
+              
               
               <% if user_signed_in? %>
+                <li class="active"><%= link_to current_user.name + "님", "#" %></li>
+                <li><%= link_to "나의 목표", goals_path %></li>
                 <li><%= link_to "로그아웃", destroy_user_session_path, method: :delete %></li>
               <% else %>
                 <li><%= link_to "로그인", omniauth_authorize_path('user', 'facebook') %></li>

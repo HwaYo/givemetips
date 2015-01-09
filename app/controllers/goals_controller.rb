@@ -1,7 +1,8 @@
 class GoalsController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => [:new, :show]
+  skip_before_filter :authenticate_user!, :only => [:new, :show, :random_show]
 
   def index
+    render plain: "목록이양!"
   end
 
   def new
@@ -19,7 +20,7 @@ class GoalsController < ApplicationController
 
   def show
     @goal = Goal.find(params[:id])
-    # @user = @goal.user
+    @user = @goal.writer
     @url = goal_url(@goal)
   end
 
@@ -28,6 +29,15 @@ class GoalsController < ApplicationController
     @goal.destroy
 
     redirect_to goals_path
+  end
+
+  def random_show
+    if Goal.count >= 1
+      rand_id = Random.rand(1..Goal.count)
+      redirect_to goal_path(id: rand_id)
+    else
+      redirect_to root_path
+    end
   end
 
 private
