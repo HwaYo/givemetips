@@ -2,6 +2,9 @@ class GoalsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:new, :show]
 
   def index
+    if user_signed_in?
+      @goals = current_user.goals.all
+    end
   end
 
   def new
